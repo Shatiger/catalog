@@ -16,27 +16,27 @@ import { ICatalogItem } from '../../main/catalog/catalog.interface';
 export class CardComponent {
   /** Item */
   @Input() item: ICatalogItem;
-  /** Remove */
-  @Output() remove = new EventEmitter<number>();
   /** Can be removed */
   @Input() canBeRemoved = false;
+  /** Remove */
+  @Output() remove = new EventEmitter<void>();
+  /** Change count */
+  @Output() changeCount = new EventEmitter<number>();
 
   /**
    * Change item count
    * @param isIncrement - is incrementing
    */
-  changeCount(isIncrement: boolean): void {
-    this.item.count += isIncrement ? 1 : -1;
-    if (this.item.count <= 0) {
-      this.item.count = 1;
-    }
-    if (this.item.count > this.item.stock) {
-      this.item.count = this.item.stock;
-    }
+  changeItemCount(isIncrement: boolean): void {
+    let count = this.item.count;
+    count += isIncrement ? 1 : -1;
+    count = count > this.item.stock ? this.item.stock : count;
+    count = count <= 0 ? 1 : count;
+    this.changeCount.emit(count);
   }
 
   /** Remove item */
   removeItem(): void {
-    this.remove.emit(this.item.id);
+    this.remove.emit();
   }
 }

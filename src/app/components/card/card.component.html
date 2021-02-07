@@ -17,11 +17,11 @@
       <span class="item__quantity">{{item.count}}</span>
       <div
         class="item__quantity-action item__quantity-action_minus"
-        (click)="changeCount(false)"
+        (click)="changeItemCount(false)"
       >&minus;</div>
       <div
         class="item__quantity-action item__quantity-action_plus"
-        (click)="changeCount(true)"
+        (click)="changeItemCount(true)"
       >+</div>
     </div>
     <p class="item__price">{{item.price * item.count | currencyRub}}</p>

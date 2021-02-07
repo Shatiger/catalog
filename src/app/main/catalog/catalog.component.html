@@ -14,6 +14,7 @@
       [cdkDragData]="item"
       cdkDrag
       [item]="item"
+      (changeCount)="changeItemCount(catalog, item.id, $event)"
     ></app-card>
   </div>
 </div>
@@ -36,7 +37,8 @@
         cdkDrag
         [item]="item"
         [canBeRemoved]="true"
-        (remove)="removeItem($event)"
+        (remove)="removeItem(item.id)"
+        (changeCount)="changeItemCount(basket, item.id, $event, true)"
       ></app-card>
     </ng-container>
   </div>
