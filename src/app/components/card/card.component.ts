@@ -1,4 +1,10 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { ICatalogItem } from '../../main/catalog/catalog.interface';
 
 @Component({
@@ -10,6 +16,10 @@ import { ICatalogItem } from '../../main/catalog/catalog.interface';
 export class CardComponent {
   /** Item */
   @Input() item: ICatalogItem;
+  /** Remove */
+  @Output() remove = new EventEmitter<number>();
+  /** Can be removed */
+  @Input() canBeRemoved = false;
 
   /**
    * Change item count
@@ -23,5 +33,10 @@ export class CardComponent {
     if (this.item.count > this.item.stock) {
       this.item.count = this.item.stock;
     }
+  }
+
+  /** Remove item */
+  removeItem(): void {
+    this.remove.emit(this.item.id);
   }
 }

@@ -1,4 +1,8 @@
-<div class="item__remove">&#10005;</div>
+<div
+  *ngIf="canBeRemoved"
+  class="item__remove"
+  (click)="removeItem()"
+></div>
 <div
   class="item__image"
   [ngStyle]="{'background-image': 'url(' + item.image + ')'}"

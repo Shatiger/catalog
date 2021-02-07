@@ -1,18 +1,61 @@
 <div class="catalog__items">
-  <div class="catalog__items-header">Товары</div>
-  <div class="catalog__items-container">
+  <div class="catalog__items-header">{{'i18n.PRODUCTS' | translate}}</div>
+  <div
+    id="catalog"
+    class="catalog__items-container"
+    cdkDropList
+    [cdkDropListData]="catalog"
+    [cdkDropListEnterPredicate]="falseReturnPredicate"
+    cdkDropListConnectedTo="basket"
+    cdkDropListSortingDisabled
+  >
     <app-card
       *ngFor="let item of catalog"
+      [cdkDragData]="item"
+      cdkDrag
       [item]="item"
     ></app-card>
   </div>
 </div>
+
 <div class="catalog__items">
-  <div class="catalog__items-header">Корзина</div>
-  <div class="catalog__items-container">
-    <app-card
-      *ngFor="let item of catalog"
-      [item]="item"
-    ></app-card>
+  <div class="catalog__items-header">{{'i18n.BASKET' | translate}}</div>
+  <div
+    id="basket"
+    class="catalog__items-container"
+    [ngClass]="{'catalog__items-container_empty': basket?.length === 0}"
+    cdkDropList
+    [cdkDropListData]="basket"
+    cdkDropListConnectedTo="catalog"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <ng-container *ngIf="basket?.length > 0; else emptyBasket">
+      <app-card
+        *ngFor="let item of basket"
+        [cdkDragData]="item"
+        cdkDrag
+        [item]="item"
+        [canBeRemoved]="true"
+        (remove)="removeItem($event)"
+      ></app-card>
+    </ng-container>
+  </div>
+
+  <div
+    *ngIf="basket?.length > 0"
+    class="catalog__items-footer"
+  >
+    <div class="catalog__sum-text">{{'i18n.BASKET_SUM' | translate}}</div>
+    <div class="catalog__sum">{{ getBasketSum() | currencyRub }}</div>
   </div>
 </div>
+
+<ng-template #emptyBasket>
+  <div class="catalog__basket-empty">
+    <img
+      src="/assets/icons/cart.png"
+      [alt]="'i18n.BASKET_EMPTY' | translate"
+    >
+    <div class="catalog__basket-empty-text">{{'i18n.BASKET_EMPTY' | translate}}</div>
+  </div>
+</ng-template>

@@ -1,7 +1,23 @@
-<svg 
+<svg
  xmlns="http://www.w3.org/2000/svg"
  xmlns:xlink="http://www.w3.org/1999/xlink"
- width="12px" height="12px">
+ width="15px" height="16px">
+<defs>
+<filter filterUnits="userSpaceOnUse" id="Filter_0" x="0px" y="0px" width="15px" height="16px"  >
+    <feOffset in="SourceAlpha" dx="0" dy="2" />
+    <feGaussianBlur result="blurOut" stdDeviation="1" />
+    <feFlood flood-color="rgb(0, 1, 0)" result="floodOut" />
+    <feComposite operator="atop" in="floodOut" in2="blurOut" />
+    <feComponentTransfer><feFuncA type="linear" slope="1"/></feComponentTransfer>
+    <feMerge>
+    <feMergeNode/>
+    <feMergeNode in="SourceGraphic"/>
+  </feMerge>
+</filter>
+
+</defs>
+<g filter="url(#Filter_0)">
 <path fill-rule="evenodd"  opacity="0.871" fill="rgb(255, 255, 255)"
- d="M11.568,10.331 L10.331,11.568 L6.000,7.237 L1.669,11.568 L0.431,10.331 L4.762,6.000 L0.431,1.669 L1.669,0.431 L6.000,4.763 L10.331,0.431 L11.568,1.669 L7.237,6.000 L11.568,10.331 Z"/>
+ d="M12.568,10.331 L11.331,11.568 L7.000,7.237 L2.669,11.568 L1.431,10.331 L5.762,6.000 L1.431,1.669 L2.669,0.431 L7.000,4.763 L11.331,0.431 L12.568,1.669 L8.237,6.000 L12.568,10.331 Z"/>
+</g>
 </svg>

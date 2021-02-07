@@ -7,7 +7,11 @@
 }
 
 .catalog__items {
+  display: flex;
+  flex-direction: column;
   width: 430px;
+  height: 630px;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
 
   &:first-child {
     margin-right: 80px;
@@ -18,10 +22,37 @@
   display: flex;
   align-items: center;
   padding: 0 30px 0;
-  height: 60px;
+  min-height: 60px;
   background-color: #007dc0;
 
   @include header($color: white);
+}
+
+.catalog__items-footer {
+  display: flex;
+  min-height: 60px;
+  padding: 0 55px 0 47px;
+}
+
+.catalog__sum-text {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  height: 100%;
+  margin-right: 28px;
+
+  @include header();
+}
+
+.catalog__sum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100%;
+
+  @include regular($size: 20px, $color: #40aa00);
 }
 
 .catalog__items-container {
@@ -29,27 +60,61 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 570px;
   overflow-y: scroll;
+  min-height: calc(100% - 120px);
   background-color: #e2e2e2;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
   scrollbar-width: thin;
   scrollbar-color: #71afd1 transparent;
 
-  /* width */
+  &_empty {
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100% - 60px);
+  }
+
   &::-webkit-scrollbar {
     width: 4px;
   }
 
-  /* Track */
   &::-webkit-scrollbar-track {
     background: transparent;
     margin: 8px 0;
   }
 
-  /* Handle */
   &::-webkit-scrollbar-thumb {
     border-radius: 2px;
     background-color: #71afd1;
+  }
+}
+
+.catalog__basket-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 270px;
+  height: 270px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+
+  img {
+    width: 120px;
+    filter: opacity(0.54);
+  }
+}
+
+.catalog__basket-empty-text {
+  @include hint($size: 20px);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.5;
+}
+
+.cdk-drop-list-dragging {
+  justify-content: flex-start;
+
+  .catalog__basket-empty {
+    display: none;
   }
 }
