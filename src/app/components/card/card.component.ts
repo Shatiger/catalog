@@ -9,15 +9,7 @@ import { ICatalogItem } from '../../main/catalog/catalog.interface';
 })
 export class CardComponent {
   /** Item */
-  @Input() item: ICatalogItem = {
-    count: 1,
-    description:
-      'Очень длинное описание, которое не войдет в одну строку, ещё и в две точно',
-    image: '/assets/images/iphone.jpg',
-    name: 'iPhone super puper long name',
-    price: 100,
-    stock: 5,
-  };
+  @Input() item: ICatalogItem;
 
   /**
    * Change item count

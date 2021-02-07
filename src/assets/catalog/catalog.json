@@ -1,0 +1,34 @@
+{
+  "catalog": [
+    {
+      "count": 1,
+      "description": "Очень длинное описание, которое не войдет в одну строку, ещё и в две точно",
+      "image": "/assets/images/iphone.jpg",
+      "name": "iPhone",
+      "price": 30000,
+      "stock": 5
+    },
+    {
+      "name": "Mac",
+      "description": "Прекрасный ноутбук",
+      "image": "/assets/images/mac.jpg",
+      "price": 100000,
+      "count": 1,
+      "stock": 10
+    },
+    {
+      "name": "Mi Band 4",
+      "image": "/assets/images/miband.jpg",
+      "price": 3000,
+      "count": 1,
+      "stock": 10
+    },
+    {
+      "description": "Беспроводные наушники, не помню названия",
+      "image": "/assets/images/mipods.jpg",
+      "price": 5000,
+      "count": 1,
+      "stock": 15
+    }
+  ]
+}
