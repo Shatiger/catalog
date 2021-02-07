@@ -1,0 +1,119 @@
+@import '/src/assets/styles/mixins.scss';
+
+:host {
+  display: block;
+  width: 100%;
+  max-width: 384px;
+  min-height: 265px;
+  background: white;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.item__image {
+  width: 100%;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.item__info {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 24px 32px 16px 24px;
+}
+
+.item__info-left {
+  overflow: hidden;
+  margin-right: 28px;
+}
+
+.item__footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.item__remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-image: url(/assets/icons/close.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 2px 1px #000000;
+}
+
+.item__name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include header();
+}
+
+.item__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 16px;
+
+  @include regular();
+}
+
+.item__quantity-wrapper {
+  position: relative;
+  width: 100px;
+  height: 25px;
+  border: 2px solid #e2e2e2;
+}
+
+.item__quantity {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  @include header();
+  line-height: 1;
+}
+
+.item__quantity-action {
+  position: absolute;
+  top: -2px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #007dc0;
+  border-radius: 2px;
+  cursor: pointer;
+
+  @include header();
+  line-height: 1;
+}
+
+.item__quantity-action_minus {
+  left: -2px;
+  border-right: 0;
+}
+
+.item__quantity-action_plus {
+  right: -2px;
+  border-left: 0;
+}
+
+.item__price {
+  margin-top: 12px;
+  text-align: center;
+
+  @include header($size: 24px, $color: #40aa00);
+}
+
+.item__stock {
+  @include hint();
+}

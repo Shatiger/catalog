@@ -1,0 +1,28 @@
+<div class="item__remove">&#10005;</div>
+<div
+  class="item__image"
+  [ngStyle]="{'background-image': 'url(' + item.image + ')'}"
+></div>
+<div class="item__info">
+  <div class="item__info-left">
+    <p class="item__name">{{item.name ? item.name : ('i18n.NO_NAME' | translate)}}</p>
+    <p class="item__description">{{item.description ? item.description : ('i18n.NO_DESCRIPTION' | translate)}}</p>
+  </div>
+  <div class="item__info-right">
+    <div class="item__quantity-wrapper">
+      <span class="item__quantity">{{item.count}}</span>
+      <div
+        class="item__quantity-action item__quantity-action_minus"
+        (click)="changeCount(false)"
+      >&minus;</div>
+      <div
+        class="item__quantity-action item__quantity-action_plus"
+        (click)="changeCount(true)"
+      >+</div>
+    </div>
+    <p class="item__price">{{item.price * item.count | currencyRub}}</p>
+  </div>
+</div>
+<div class="item__footer">
+  <p class="item__stock">{{'i18n.STOCK_COUNT' | translate: { stock: item.stock } }}</p>
+</div>

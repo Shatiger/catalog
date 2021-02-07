@@ -8,14 +8,14 @@
   }
 }
 
-@mixin hint($color: #000000, $weight: 400, $size: 14px) {
+@mixin hint($color: rgba(0, 0, 0, 0.54), $weight: 400, $size: 13px) {
   line-height: 1.4;
   font-size: $size;
   font-weight: $weight;
   color: $color;
 }
 
-@mixin regular($color: #000000, $weight: 400, $size: 16px) {
+@mixin regular($color: rgba(0, 0, 0, 0.64), $weight: 400, $size: 16px) {
   line-height: 1.4;
   font-size: $size;
   font-weight: $weight;
